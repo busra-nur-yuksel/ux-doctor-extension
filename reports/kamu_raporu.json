@@ -1,0 +1,189 @@
+{
+  "url": "https://www.ornek-kamu.gov.tr/hizmetler",
+  "timestamp": "2026-10-08T14:20:00.000Z",
+  "isSensitive": false,
+  "deterministicScore": 45,
+  "llmScore": 55,
+  "weightedScore": 49,
+  "scores": {
+    "deterministic": 45,
+    "llm": 55,
+    "weighted": 49,
+    "subScores": {
+      "visibility": 50,
+      "feedback": 50,
+      "constraints": 60,
+      "mapping": 55,
+      "consistency": 55,
+      "affordance": 60
+    }
+  },
+  "subScores": {
+    "visibility": 50,
+    "feedback": 50,
+    "constraints": 60,
+    "mapping": 55,
+    "consistency": 55,
+    "affordance": 60
+  },
+  "hallucinationMetrics": {
+    "totalFindings": 7,
+    "validFindings": 6,
+    "hallucinatedCount": 1,
+    "hallucinationRate": "14.29%"
+  },
+  "findings": [
+    {
+      "selector": "html",
+      "rule": "WCAG 3.1.1",
+      "severity": "Kritik",
+      "message": "Sayfa dili belirtilmemiş. HTML elementinde lang attribute eksik.",
+      "recommendation": "HTML elementine lang=\"tr\" veya uygun dil kodunu ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#header > img:nth-child(1)",
+      "rule": "WCAG 1.1.1",
+      "severity": "Yüksek",
+      "message": "Görselde alt attribute eksik.",
+      "recommendation": "Görsel için açıklayıcı alt metni ekleyin veya dekoratifse alt=\"\" kullanın.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#header > img:nth-child(2)",
+      "rule": "WCAG 1.1.1",
+      "severity": "Yüksek",
+      "message": "Görselde alt attribute eksik.",
+      "recommendation": "Görsel için açıklayıcı alt metni ekleyin veya dekoratifse alt=\"\" kullanın.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#citizen-id-input",
+      "rule": "WCAG 1.3.1 / 3.3.2",
+      "severity": "Yüksek",
+      "message": "Form kontrolü ile ilişkilendirilmiş label eksik.",
+      "recommendation": "Label for=\"...\" kullanın veya aria-label/aria-labelledby ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#password-input",
+      "rule": "WCAG 1.3.1 / 3.3.2",
+      "severity": "Yüksek",
+      "message": "Form kontrolü ile ilişkilendirilmiş label eksik.",
+      "recommendation": "Label for=\"...\" kullanın veya aria-label/aria-labelledby ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#service-select",
+      "rule": "WCAG 1.3.1 / 3.3.2",
+      "severity": "Yüksek",
+      "message": "Form kontrolü ile ilişkilendirilmiş label eksik.",
+      "recommendation": "Label for=\"...\" kullanın veya aria-label/aria-labelledby ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#application-form > textarea",
+      "rule": "WCAG 1.3.1 / 3.3.2",
+      "severity": "Yüksek",
+      "message": "Form kontrolü ile ilişkilendirilmiş label eksik.",
+      "recommendation": "Label for=\"...\" kullanın veya aria-label/aria-labelledby ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#menu-toggle",
+      "rule": "WCAG 2.5.8",
+      "severity": "Orta",
+      "message": "Dokunmatik hedef boyutu küçük: 18x18px (minimum 24x24px gerekli).",
+      "recommendation": "Tıklanabilir alanı en az 24x24px boyutuna büyütün veya padding ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#print-btn",
+      "rule": "WCAG 2.5.8",
+      "severity": "Orta",
+      "message": "Dokunmatik hedef boyutu küçük: 20x20px (minimum 24x24px gerekli).",
+      "recommendation": "Tıklanabilir alanı en az 24x24px boyutuna büyütün veya padding ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": ".footer-link:nth-child(1)",
+      "rule": "WCAG 2.4.4",
+      "severity": "Yüksek",
+      "message": "Link metni veya açıklaması eksik.",
+      "recommendation": "Link anlamlı metin ekleyin veya aria-label kullanın.",
+      "source": "deterministic"
+    },
+    {
+      "selector": ".footer-link:nth-child(2)",
+      "rule": "WCAG 2.4.4",
+      "severity": "Yüksek",
+      "message": "Link metni veya açıklaması eksik.",
+      "recommendation": "Link anlamlı metin ekleyin veya aria-label kullanın.",
+      "source": "deterministic"
+    },
+    {
+      "selector": ".footer-link:nth-child(3)",
+      "rule": "WCAG 2.4.4",
+      "severity": "Yüksek",
+      "message": "Link metni veya açıklaması eksik.",
+      "recommendation": "Link anlamlı metin ekleyin veya aria-label kullanın.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "title",
+      "rule": "WCAG 2.4.2",
+      "severity": "Kritik",
+      "message": "Sayfa başlığı (title elementi) eksik.",
+      "recommendation": "HTML head sectionına anlamlı bir title elementi ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#login-form",
+      "rule": "Visibility",
+      "severity": "Yüksek",
+      "message": "Giriş formu ana sayfada yeterince görünür değil.",
+      "recommendation": "Giriş formunu daha belirgin bir konuma taşıyın veya vurgulayın.",
+      "source": "llm"
+    },
+    {
+      "selector": "#submit-application",
+      "rule": "Feedback",
+      "severity": "Yüksek",
+      "message": "Başvuru gönderme butonunda işlem durumu geri bildirimi yok.",
+      "recommendation": "Yükleme göstergesi veya başarı/hata mesajı ekleyin.",
+      "source": "llm"
+    },
+    {
+      "selector": "#service-list",
+      "rule": "Mapping",
+      "severity": "Orta",
+      "message": "Hizmet listesi ile ilgili açıklamalar arasındaki ilişki zayıf.",
+      "recommendation": "Her hizmet öğesinin yanında kısa açıklama ekleyin.",
+      "source": "llm"
+    },
+    {
+      "selector": "#contact-info",
+      "rule": "Constraints",
+      "severity": "Orta",
+      "message": "İletişim formunda karakter limiti belirtilmemiş.",
+      "recommendation": "Metin alanlarına maxlength attribute veya sayaç ekleyin.",
+      "source": "llm"
+    },
+    {
+      "selector": "#navigation-menu",
+      "rule": "Consistency",
+      "severity": "Yüksek",
+      "message": "Navigasyon menüsü alt sayfalarda farklı yapıda.",
+      "recommendation": "Tüm sayfalarda tutarlı bir navigasyon yapısı kullanın.",
+      "source": "llm"
+    },
+    {
+      "selector": "#search-button",
+      "rule": "Affordance",
+      "severity": "Orta",
+      "message": "Arama butonu tıklanabilir görünmüyor.",
+      "recommendation": "Butona ikon veya renk değişimi ile tıklanabilirliği belirtin.",
+      "source": "llm"
+    }
+  ]
+}

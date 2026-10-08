@@ -1,0 +1,82 @@
+{
+  "url": "https://www.ornek-hastane.gov.tr/randevu",
+  "timestamp": "2026-10-08T10:30:00.000Z",
+  "isSensitive": true,
+  "deterministicScore": 55,
+  "llmScore": null,
+  "weightedScore": 55,
+  "scores": {
+    "deterministic": 55,
+    "llm": null,
+    "weighted": 55,
+    "subScores": null
+  },
+  "subScores": null,
+  "hallucinationMetrics": null,
+  "findings": [
+    {
+      "selector": "html",
+      "rule": "WCAG 3.1.1",
+      "severity": "Kritik",
+      "message": "Sayfa dili belirtilmemiş. HTML elementinde lang attribute eksik.",
+      "recommendation": "HTML elementine lang=\"tr\" veya uygun dil kodunu ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#main > img.logo",
+      "rule": "WCAG 1.1.1",
+      "severity": "Yüksek",
+      "message": "Görselde alt attribute eksik.",
+      "recommendation": "Görsel için açıklayıcı alt metni ekleyin veya dekoratifse alt=\"\" kullanın.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#appointment-form > input[type=\"text\"]",
+      "rule": "WCAG 1.3.1 / 3.3.2",
+      "severity": "Yüksek",
+      "message": "Form kontrolü ile ilişkilendirilmiş label eksik.",
+      "recommendation": "Label for=\"...\" kullanın veya aria-label/aria-labelledby ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#appointment-form > input[type=\"tel\"]",
+      "rule": "WCAG 1.3.1 / 3.3.2",
+      "severity": "Yüksek",
+      "message": "Form kontrolü ile ilişkilendirilmiş label eksik.",
+      "recommendation": "Label for=\"...\" kullanın veya aria-label/aria-labelledby ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#appointment-form > input[type=\"date\"]",
+      "rule": "WCAG 1.3.1 / 3.3.2",
+      "severity": "Yüksek",
+      "message": "Form kontrolü ile ilişkilendirilmiş label eksik.",
+      "recommendation": "Label for=\"...\" kullanın veya aria-label/aria-labelledby ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#submit-btn",
+      "rule": "WCAG 2.5.8",
+      "severity": "Orta",
+      "message": "Dokunmatik hedef boyutu küçük: 20x20px (minimum 24x24px gerekli).",
+      "recommendation": "Tıklanabilir alanı en az 24x24px boyutuna büyütün veya padding ekleyin.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "#emergency-link",
+      "rule": "WCAG 2.4.4",
+      "severity": "Yüksek",
+      "message": "Link metni veya açıklaması eksik.",
+      "recommendation": "Link anlamlı metin ekleyin veya aria-label kullanın.",
+      "source": "deterministic"
+    },
+    {
+      "selector": "title",
+      "rule": "WCAG 2.4.2",
+      "severity": "Kritik",
+      "message": "Sayfa başlığı boş.",
+      "recommendation": "Title elementine anlamlı bir sayfa başlığı ekleyin.",
+      "source": "deterministic"
+    }
+  ]
+}
