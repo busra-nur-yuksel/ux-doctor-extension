@@ -6,7 +6,8 @@ Açık olan web sayfalarını deterministik kurallar ve Don Norman'ın 6 tasarı
 
 # UX Doctor (#0): Kanıta Dayalı Tanı Aracı
 
-> 📺 **Demo ve Doğrulama Videosu:** [YouTube Üzerinden İzleyin](YOUTUBE_VIDEO_LINKINIZI_BURAYA_YAPISTIRIN)
+> 📺 **Demo ve Doğrulama Videosu:** [YouTube Üzerinden İzleyin]
+(https://youtu.be/Ng919ARi_Go?si=EEg1PsR0Vdam8VY2)
 
 Açık olan web sayfalarını deterministik kurallar ve Don Norman'ın 6 tasarım ilkesine dayalı üretken yapay zeka (LLM) katmanıyla analiz eden, kanıta dayalı (DOM eşlemeli) Chrome eklentisi (Manifest V3).
 
