@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Doctor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+        <h1>UX Doctor</h1>
+      </div>
+      <span class="version">v1.0.0</span>
+    </header>
+
+    <!-- API Key Configuration -->
+    <div class="config-section" id="configSection">
+      <div class="form-group">
+        <label for="apiKey">API Key</label>
+        <input type="password" id="apiKey" placeholder="sk-..." />
+      </div>
+      <div class="form-group">
+        <label for="apiProvider">Sağlayıcı</label>
+        <select id="apiProvider">
+          <option value="openrouter">OpenRouter</option>
+          <option value="openai">OpenAI</option>
+          <option value="claude">Claude (Anthropic)</option>
+          <option value="custom">Custom / OpenAI-Compatible</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="apiBaseUrl">Base URL</label>
+        <input type="text" id="apiBaseUrl" placeholder="Base URL (örn: http://localhost:11434/v1)" />
+      </div>
+      <div class="form-group">
+        <label for="apiModel">Model Adı</label>
+        <input type="text" id="apiModel" placeholder="Model Name (örn: gemma4, gpt-4o-mini)" />
+      </div>
+      <button id="saveApiKey" class="btn-secondary">Kaydet</button>
+    </div>
+
+    <!-- Sensitive Page Warning -->
+    <div class="warning-banner hidden" id="sensitiveWarning">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/>
+        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      <span>Güvenli sayfa algılandı - LLM analizi devre dışı</span>
+    </div>
+
+    <!-- Score Display -->
+    <div class="score-section" id="scoreSection">
+      <div class="score-card main">
+        <div class="score-label">Genel Puan</div>
+        <div class="score-value" id="weightedScore">--</div>
+        <div class="score-bar">
+          <div class="score-fill" id="weightedFill" style="width: 0%"></div>
+        </div>
+      </div>
+      <div class="score-cards-row">
+        <div class="score-card">
+          <div class="score-label">Deterministik (55%)</div>
+          <div class="score-value" id="deterministicScore">--</div>
+          <div class="score-bar small">
+            <div class="score-fill" id="deterministicFill" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">LLM (45%)</div>
+          <div class="score-value" id="llmScore">--</div>
+          <div class="score-bar small">
+            <div class="score-fill" id="llmFill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Don Norman 6 Principles Sub-Scores Panel -->
+      <div class="subscores-section" id="subscoresSection">
+        <div class="subscores-header">Norman İlkeleri Alt Skorları</div>
+        <div class="subscores-grid">
+          <div class="subscore-item">
+            <div class="subscore-top">
+              <span class="subscore-name">Visibility</span>
+              <span class="subscore-val" id="subVisibility">--</span>
+            </div>
+            <div class="subscore-bar"><div class="subscore-fill" id="fillVisibility" style="width: 0%"></div></div>
+          </div>
+          <div class="subscore-item">
+            <div class="subscore-top">
+              <span class="subscore-name">Feedback</span>
+              <span class="subscore-val" id="subFeedback">--</span>
+            </div>
+            <div class="subscore-bar"><div class="subscore-fill" id="fillFeedback" style="width: 0%"></div></div>
+          </div>
+          <div class="subscore-item">
+            <div class="subscore-top">
+              <span class="subscore-name">Constraints</span>
+              <span class="subscore-val" id="subConstraints">--</span>
+            </div>
+            <div class="subscore-bar"><div class="subscore-fill" id="fillConstraints" style="width: 0%"></div></div>
+          </div>
+          <div class="subscore-item">
+            <div class="subscore-top">
+              <span class="subscore-name">Mapping</span>
+              <span class="subscore-val" id="subMapping">--</span>
+            </div>
+            <div class="subscore-bar"><div class="subscore-fill" id="fillMapping" style="width: 0%"></div></div>
+          </div>
+          <div class="subscore-item">
+            <div class="subscore-top">
+              <span class="subscore-name">Consistency</span>
+              <span class="subscore-val" id="subConsistency">--</span>
+            </div>
+            <div class="subscore-bar"><div class="subscore-fill" id="fillConsistency" style="width: 0%"></div></div>
+          </div>
+          <div class="subscore-item">
+            <div class="subscore-top">
+              <span class="subscore-name">Affordance</span>
+              <span class="subscore-val" id="subAffordance">--</span>
+            </div>
+            <div class="subscore-bar"><div class="subscore-fill" id="fillAffordance" style="width: 0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button id="analyzeBtn" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        Analiz Et
+      </button>
+      <button id="exportBtn" class="btn-secondary" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        JSON Rapor İndir
+      </button>
+    </div>
+
+    <!-- Findings List -->
+    <div class="findings-section" id="findingsSection">
+      <div class="findings-header">
+        <h2>Bulgular</h2>
+        <span class="findings-count" id="findingsCount">0</span>
+      </div>
+      <div class="findings-list" id="findingsList">
+        <div class="empty-state">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <p>Analiz etmek için "Analiz Et" butonuna tıklayın</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-overlay hidden" id="loadingOverlay">
+      <div class="spinner"></div>
+      <p>Analiz yapılıyor...</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
